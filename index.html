@@ -1211,14 +1211,15 @@ const assessmentData = {
                     pdf.text(`• ${topic.name}`, margin + 5, yPosition);
                     pdf.setFont(undefined, 'normal');
                     
-                    if (selectedLevel !== null) {
-                        const levelNames = ['Starting ⭐', 'Growing ⭐⭐', 'Mastering ⭐⭐⭐', 'Leading ⭐⭐⭐⭐'];
-                        pdf.setTextColor(201, 169, 97);
-                        pdf.text(levelNames[selectedLevel - 1], pageWidth - margin - 40, yPosition);
-                    } else {
-                        pdf.setTextColor(150, 150, 150);
-                        pdf.text('Not assessed', pageWidth - margin - 40, yPosition);
-                    }
+if (selectedLevel !== null) {
+    const levelNames = ['Starting *', 'Growing **', 'Mastering ***', 'Leading ****'];
+    pdf.setTextColor(201, 169, 97);
+    pdf.text(levelNames[selectedLevel - 1], pageWidth - margin - 40, yPosition);
+} else {
+    pdf.setTextColor(150, 150, 150);
+    pdf.text('Not assessed', pageWidth - margin - 40, yPosition);
+}
+
 
                     yPosition += 7;
                 });
@@ -1236,6 +1237,7 @@ const assessmentData = {
     </script>
 </body>
 </html>
+
 
 
 
