@@ -48,13 +48,15 @@ body {
 }
 
 
-        header {
-            background: linear-gradient(135deg, var(--lvmh-navy) 0%, #243447 100%);
-            color: var(--lvmh-white);
-            padding: 40px 60px;
-            position: relative;
-            overflow: hidden;
-        }
+header {
+    background: linear-gradient(135deg, var(--lvmh-navy) 0%, #243447 100%);
+    color: var(--lvmh-white);
+    padding: 40px 60px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
 
         header::before {
             content: '';
@@ -1234,6 +1236,7 @@ const assessmentData = {
     </script>
 </body>
 </html>
+
 
 
 
