@@ -25,23 +25,28 @@
             --lvmh-light-gray: #f5f6fa;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--lvmh-navy) 0%, var(--lvmh-dark-blue) 100%);
-            color: var(--lvmh-navy);
-            line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
-        }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--lvmh-navy) 0%, var(--lvmh-dark-blue) 100%);
+    color: var(--lvmh-navy);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+}
 
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-            background: var(--lvmh-white);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    background: var(--lvmh-white);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 40px);
+}
+
 
         header {
             background: linear-gradient(135deg, var(--lvmh-navy) 0%, #243447 100%);
@@ -119,27 +124,32 @@
             box-shadow: 0 8px 25px rgba(201, 169, 97, 0.5);
         }
 
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 0;
-        }
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 0;
+    flex: 1;
+    overflow: hidden;
+}
 
-        .assessment-panel {
-            padding: 50px;
-            background: var(--lvmh-white);
-        }
 
-        .dashboard-panel {
-            background: linear-gradient(180deg, var(--lvmh-light-gray) 0%, var(--lvmh-silver) 100%);
-            padding: 50px 40px;
-            border-left: 3px solid var(--lvmh-gold);
-            position: sticky;
-            top: 20px;
-            align-self: flex-start;
-            max-height: calc(100vh - 40px);
-            overflow-y: auto;
-        }
+.assessment-panel {
+    padding: 50px;
+    background: var(--lvmh-white);
+    overflow-y: auto;
+    height: 100%;
+}
+
+
+
+.dashboard-panel {
+    background: linear-gradient(180deg, var(--lvmh-light-gray) 0%, var(--lvmh-silver) 100%);
+    padding: 40px 30px;
+    border-left: 3px solid var(--lvmh-gold);
+    overflow-y: auto;
+    height: 100%;
+}
+
 
 
         .category-section {
@@ -1224,6 +1234,7 @@ const assessmentData = {
     </script>
 </body>
 </html>
+
 
 
 
