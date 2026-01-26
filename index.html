@@ -573,10 +573,11 @@ header {
         <header>
             <div class="header-content">
                 <div class="logo-section">
-             <!--   <img src="STRIDE_logo.png" alt="STRIDE Logo" class="logo" id="strideLogo"> -->
+           <img src="logo ATLAS.png" alt="ATLAS Logo" class="logo" id="atlasLogo">
+
                     <div class="header-text">
-                        <h1>ASSESSMENT TOOL </h1>
-                        <p> Asssement Tool</p>
+                        <h1>ATLAS </h1>
+                        <p> Assessment Tool and Levers for Agile Successl</p>
                     </div>
                 </div>
                 <button class="export-btn" onclick="exportToPDF()">
@@ -1097,23 +1098,41 @@ const assessmentData = {
             const pageHeight = pdf.internal.pageSize.getHeight();
             const margin = 15;
             let yPosition = margin;
-
+        
             // Add header with logo
             pdf.setFillColor(26, 35, 50);
             pdf.rect(0, 0, pageWidth, 40, 'F');
             
+            // Add logo image
+            const logoImg = document.getElementById('atlasLogo');
+            if (logoImg && logoImg.complete) {
+                try {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = logoImg.naturalWidth;
+                    canvas.height = logoImg.naturalHeight;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(logoImg, 0, 0);
+                    const imgData = canvas.toDataURL('image/png');
+                    
+                    // Add logo to PDF (adjust size and position as needed)
+                    pdf.addImage(imgData, 'PNG', margin, 5, 40, 30);
+                } catch (error) {
+                    console.error('Error adding logo to PDF:', error);
+                }
+            }
+            
             pdf.setTextColor(255, 255, 255);
             pdf.setFontSize(28);
-            pdf.text('ASSESSMENT TOOL', margin, 20);
+            pdf.text('ASSESSMENT TOOL', margin + 50, 20);
             
             pdf.setFontSize(12);
-            pdf.text('Report', margin, 30);
+            pdf.text('Assessment Tool and Levers for Agile Success', margin + 50, 30);
             
             // Add date
             const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
             pdf.setFontSize(10);
             pdf.text(today, pageWidth - margin - 40, 30);
-
+        
             yPosition = 50;
 
             // Overall Score Section
@@ -1237,6 +1256,7 @@ if (selectedLevel !== null) {
     </script>
 </body>
 </html>
+
 
 
 
