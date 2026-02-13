@@ -1351,9 +1351,10 @@ const assessmentData = {
             pdf.setFontSize(10);
             pdf.setFont(undefined, 'bold');
             pdf.text('Category', margin + 5, yPosition + 7);
-            pdf.text('Score', pageWidth - margin - 45, yPosition + 7);
-            pdf.text('Level', pageWidth - margin - 20, yPosition + 7);
-            pdf.text('Progress', pageWidth - margin - 80, yPosition + 7);
+            pdf.text('Progress', pageWidth - margin - 60, yPosition + 7);
+            pdf.text('Score', pageWidth - margin - 30, yPosition + 7);
+            pdf.text('Level', pageWidth - margin - 10, yPosition + 7);
+
             
             yPosition += 12;
 
@@ -1378,28 +1379,28 @@ const assessmentData = {
                 const categoryText = category.length > 35 ? category.substring(0, 32) + '...' : category;
                 pdf.text(categoryText, margin + 5, yPosition + 3);
                 
+                // Progress bar
+                const barWidth = 35;
+                const barX = pageWidth - margin - 65;
+               
+                
+   
+                
+ 
+                
                 // Score
                 pdf.setTextColor(201, 169, 97);
                 pdf.setFont(undefined, 'bold');
-                pdf.text(avgScore.toFixed(2), pageWidth - margin - 45, yPosition + 3);
+                pdf.setFontSize(10);
+                pdf.text(avgScore.toFixed(2), pageWidth - margin - 30, yPosition + 3);
                 pdf.setFont(undefined, 'normal');
                 
-                // Stars
-                const starCount = Math.round(avgScore);
-                const stars = '★'.repeat(starCount);
-                pdf.setTextColor(201, 169, 97);
-                pdf.text(stars, pageWidth - margin - 25, yPosition + 3);
-                
-                // Progress bar
-                const barWidth = 30;
-                const barX = pageWidth - margin - 85;
-                pdf.setDrawColor(220, 220, 220);
-                pdf.setLineWidth(0.3);
-                pdf.rect(barX, yPosition - 2, barWidth, 6);
-                
-                pdf.setFillColor(201, 169, 97);
-                pdf.rect(barX, yPosition - 2, (barWidth * percentage) / 100, 6, 'F');
-                
+                // Level number only
+                const levelNum = Math.round(avgScore);
+                pdf.setTextColor(26, 35, 50);
+                pdf.setFontSize(9);
+                pdf.text(levelNum > 0 ? levelNum.toString() : '-', pageWidth - margin - 10, yPosition + 3);
+
                 // Completion percentage
                 pdf.setFontSize(7);
                 pdf.setTextColor(100, 100, 100);
@@ -1592,5 +1593,6 @@ const assessmentData = {
     </script>
 </body>
 </html>
+
 
 
