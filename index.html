@@ -1516,11 +1516,12 @@ const assessmentData = {
                         } else {
                             const levelNames = ['Starting', 'Growing', 'Mastering', 'Leading'];
                             const levelColors = [[231, 76, 60], [243, 156, 18], [52, 152, 219], [201, 169, 97]];
-                            const stars = '★'.repeat(selectedLevel);
                             
                             pdf.setTextColor(levelColors[selectedLevel - 1][0], levelColors[selectedLevel - 1][1], levelColors[selectedLevel - 1][2]);
-                            pdf.setFontSize(11);
-                            pdf.text(stars, pageWidth - margin - 35, yPosition + 4);
+                            pdf.setFontSize(10);
+                            pdf.setFont(undefined, 'bold');
+                            pdf.text(selectedLevel.toString(), pageWidth - margin - 35, yPosition + 4);
+                            pdf.setFont(undefined, 'normal');
                             
                             pdf.setFontSize(8);
                             pdf.text(levelNames[selectedLevel - 1], pageWidth - margin - 12, yPosition + 4);
@@ -1532,6 +1533,7 @@ const assessmentData = {
                         pdf.text('Not assessed', pageWidth - margin - 20, yPosition + 4);
                         pdf.setFont(undefined, 'normal');
                     }
+
 
                     yPosition += 10;
                     
@@ -1596,6 +1598,7 @@ const assessmentData = {
     </script>
 </body>
 </html>
+
 
 
 
